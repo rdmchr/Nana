@@ -10,7 +10,7 @@ const ipSchema = z.object({
 	}),
 });
 
-const _job = Cron("* * * * *", async () => {
+const _job = Cron(env.NANA_CRON, async () => {
 	console.log(`[${new Date().toISOString()}] Running firewall update job`);
 
 	/**
@@ -40,7 +40,7 @@ const _job = Cron("* * * * *", async () => {
 		{
 			description: "Allow FRP connections (managed my nana)",
 			direction: "in",
-			port: "7000",
+			port: env.HETZNER_FIREWALL_PORT,
 			protocol: "tcp",
 			source_ips: [`${currentIp}/32`],
 			destination_ips: [],
