@@ -10,7 +10,7 @@ const ipSchema = z.object({
 	}),
 });
 
-const _job = Cron(env.NANA_CRON, async () => {
+const job = Cron(env.NANA_CRON, async () => {
 	console.log(`[${new Date().toISOString()}] Running firewall update job`);
 
 	/**
@@ -64,3 +64,10 @@ const _job = Cron(env.NANA_CRON, async () => {
 		console.log(`[${new Date().toISOString()}] Updated firewall rules`);
 	}
 });
+
+console.log(`[${new Date().toISOString()}] Nana is now running! Next run: ${job.nextRun()?.toISOString() ?? "never"}`);
+
+if (env.NANA_RUN_ON_START) {
+	console.log(`[${new Date().toISOString()}] Running job on start`);
+	await job.trigger();
+}

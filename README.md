@@ -15,6 +15,7 @@ It uses the Hetzner Cloud API to create the rule.
 - *HETZNER_FIREWALL_ID*: The ID of the firewall you want to modify.
 - *HETZNER_FIREWALL_PORT*: The port you want to open. (Nana always opens the port for TCP traffic, default: 7000)
 - *NANA_CRON*: The cron schedule for Nana to run. (Default: `0 0 */6 * * *`, every 6 hours)
+- *NANA_RUN_ON_START*: Run the script immediately on container start. (Default: `true`)
 
 ## Example
 

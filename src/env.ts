@@ -7,6 +7,7 @@ export const env = createEnv({
     HETZNER_FIREWALL_ID: z.string().min(1),
     HETZNER_FIREWALL_PORT: z.string().optional().default("7000"),
     NANA_CRON: z.string().optional().default("0 0 */6 * * *"),
+    NANA_RUN_ON_START: z.boolean().optional().default(true),
   },
  
   /**
