@@ -17,7 +17,7 @@ const job = Cron(env.NANA_CRON, async () => {
 	 * Our current IP address. We need this to add it to the firewall rules.
 	 */
 	const currentIp = await (async () => {
-		const ipRes = await fetch("https://ip.radmacher.dev/api");
+		const ipRes = await fetch("https://ip.radmacher.church/api");
 		const ipData = await ipRes.json();
 		const parsedIpData = ipSchema.parse(ipData);
 		const ip = parsedIpData.headers["X-Real-Ip"][0];
